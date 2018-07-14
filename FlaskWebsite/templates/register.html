@@ -1,0 +1,61 @@
+{% extends 'formbase.html' %}
+{% block form %}
+<form method="post" action="" class="container-register">
+
+        {{ form.hidden_tag() }}
+            <h3 class="center3"> Create a new user</h3>
+            <div class="form">
+        {{ form.username.label() }}<br/>
+
+
+        {% if form.username.errors %}
+        {{ form.username(class = 'error-frame') }}</div>
+                {% for error in form.username.errors %}
+                    <span class = 'error-msg'>{{ error }}</span>
+                {% endfor %}
+        {% else %}
+        {{ form.username() }}</div>
+        {% endif %}
+
+
+            <div class="form">
+        {{ form.email.label() }}<br/>
+        {% if form.email.errors %}
+        {{ form.email(class = 'error-frame') }}</div>
+            {% for error in form.email.errors %}
+                <span class="error-msg">{{ error }}</span>
+            {% endfor %}
+        {% else %}
+        {{ form.email() }}</div>
+        {% endif %}
+
+
+            <div class="form">
+        {{ form.password.label() }}<br/>
+        {% if form.password.errors %}
+            {{ form.password(class = 'error-frame') }}</div>
+                {% for error in form.password.errors%}
+                    <span class="error-msg">{{ error }}</span>
+                {% endfor %}
+            {% else %}
+                {{ form.password() }}</div>
+        {% endif %}
+
+            <div class="form">
+        {{ form.confirm_password.label() }}<br/>
+        {% if form.confirm_password.errors %}
+            {{ form.confirm_password(class = 'error-frame') }}</div>
+                {% for error in form.confirm_password.errors %}
+                    <span class="error-msg">{{ error }}</span>
+                {% endfor %}
+        {% else %}
+        {{ form.confirm_password() }}</div>
+        {% endif %}
+
+            <div class="form">
+        {{ form.submit(class = 'button') }}</div>
+
+        <p class="form form-info"> Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+            or return to the <a href="{{ url_for('home') }}">homepage</a>.</p>
+    </form>
+{% endblock form %}

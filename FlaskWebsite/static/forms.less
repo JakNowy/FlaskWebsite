@@ -1,0 +1,112 @@
+@color1: #3a52a7; // blue
+@color2: #f5f5f5; // whitesmoke
+@color3: #d00023; // error
+
+@font-size: 14px;
+
+@margin1: 10%;
+@margin2: 20%;
+@margin3: 30%;
+
+body
+{
+  background: @color1;
+}
+h3{
+  font-size: @font-size * 1.7;
+  .center;
+}
+
+a{
+  color: #5a90e8;
+  text-decoration: none;
+}
+a:hover
+{
+  text-decoration: underline;
+}
+input
+{
+  width: 60%;
+  min-height: 16px;
+}
+.remember_me
+{
+  width: 10%;
+}
+.center
+{
+  text-align: center;
+  padding: 2px;
+  margin-right: @margin3;
+  margin-left: @margin3;
+}
+
+.container-register
+{
+  border: @color1 1px solid;
+  .center;
+  margin-top: @margin1 - 2;
+  color: @color1;
+  width: 40%;
+  height: auto;
+  background-color: @color2;
+  border-radius: 10px;
+}
+
+.form{
+  font-size: @font-size * 1.3;
+  padding: 6px;
+  margin-right: @margin2;
+  margin-left: @margin2;
+}
+.button
+{
+  border-radius: 5px;
+  border-color: @color1;
+  color: @color2;
+  background-color: @color1;
+  cursor: pointer;
+  margin: 3% 0;
+  width: 30%;
+}
+.button:hover
+{
+  background-color: @color1 *1.4;
+}
+
+.form-info
+{
+  font-size: @font-size;
+  width: 50%;
+  margin: 0 25%;
+}
+
+.error-msg
+{
+  color: @color3;
+  font-size: @font-size * 0.9;
+}
+
+.error-frame
+{
+  border: 1px @color3 solid;
+}
+
+.popup
+{
+  height: 20px;
+}
+.positive
+{
+  .popup;
+  color: @color2;
+  background: @color1 * 1.5;
+}
+
+.negative
+{
+  .popup;
+  color: @color3 * 0.5;
+  background: @color3 * 2;
+}

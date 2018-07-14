@@ -1,0 +1,86 @@
+body {
+  background: #3a52a7;
+}
+h3 {
+  font-size: 23.8px;
+  text-align: center;
+  padding: 2px;
+  margin-right: 30%;
+  margin-left: 30%;
+}
+a {
+  color: #5a90e8;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+input {
+  width: 60%;
+  min-height: 16px;
+}
+.remember_me {
+  width: 10%;
+}
+.center {
+  text-align: center;
+  padding: 2px;
+  margin-right: 30%;
+  margin-left: 30%;
+}
+.container-register {
+  border: #3a52a7 1px solid;
+  text-align: center;
+  padding: 2px;
+  margin-right: 30%;
+  margin-left: 30%;
+  margin-top: 8%;
+  color: #3a52a7;
+  width: 40%;
+  height: auto;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.form {
+  font-size: 18.2px;
+  padding: 6px;
+  margin-right: 20%;
+  margin-left: 20%;
+}
+.button {
+  border-radius: 5px;
+  border-color: #3a52a7;
+  color: #f5f5f5;
+  background-color: #3a52a7;
+  cursor: pointer;
+  margin: 3% 0;
+  width: 30%;
+}
+.button:hover {
+  background-color: #5173ea;
+}
+.form-info {
+  font-size: 14px;
+  width: 50%;
+  margin: 0 25%;
+}
+.error-msg {
+  color: #d00023;
+  font-size: 12.6px;
+}
+.error-frame {
+  border: 1px #d00023 solid;
+}
+.popup {
+  height: 20px;
+}
+.positive {
+  height: 20px;
+  color: #f5f5f5;
+  background: #577bfb;
+}
+.negative {
+  height: 20px;
+  color: #680012;
+  background: #ff0046;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Jakub Nowakowski - your web developer</title>
+</head>
+
+
+<body>
+<div id='nav'>
+    <a class="burger-nav"></a>
+	<ol>
+		<li> <a href='#container0' id="main">Home Page</a> </li>
+		<li> <a href='#container1'>Front-end Development</a> </li>
+		<li> <a href='#container2'>Back-end Development</a> </li>
+		<li> <a href='https://github.com/JakNowy' target="_blank">GitHub</a> </li>
+
+		<li>
+			<a href="{{ url_for('login') }}">Log in</a>
+			<!--<ul>-->
+				<!--<li><a href='#container4'>E-mail</a></li>-->
+				<!--<li><a href='https://github.com/JakNowy' target="_blank">GitHub</a></li>-->
+				<!--<li><a href='https://stackoverflow.com/users/8570826/kobe-bryant' target="_blank">Stack Overflow</a></li>-->
+			<!--</ul>-->
+        </li>
+    <div class="return"></div>
+    </ol>
+</div>
+
+<div id="container0"> </div>
+
+<div id="container0-2">
+	<div class="content">
+		<p class="title"> So what do I offer?</p>
+	</div>
+
+</div>
+
+<div id='container1' class="container-img">
+	Front end Development
+</div>
+
+<div id="container1-2">
+    <div class="content">
+        <p class="title">What kind of technologies am I learing?</p>
+		<img src="{{ url_for('static', filename='img/frontend/html.png') }}" class="frontend"> </img>
+		<img src="{{ url_for('static', filename='img/frontend/css.png') }}" class="frontend"> </img>
+		<img src="{{ url_for('static', filename='img/frontend/js.png') }}" class="frontend"> </img>
+		<img src="{{ url_for('static', filename='img/frontend/bootstrap.png') }}" class="frontend"> </img>
+		<div style="clear:both"></div>
+	</div>
+</div>
+
+<div id='container2' class="container-img">
+    Back end Development
+</div>
+
+<div id="container2-2">
+	<div class="content">
+		<h3 style="text-align: center; font-size: 56px">Python</h3>
+		I use <span>Python 3</span> for backend purposes. I'm learing both <span>Flask</span> and <span>Django</span>
+        frameworks. Feel free to <a href={{ url_for('register') }}>register </a>
+        and <a href={{ url_for('login') }}>log in </a>
+        and share your opinions about my website below.
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+{#        Feel free to check out my standalone <a href="https://github.com/JakNowy/GzK" target="_blank">#}
+{#        Django project</a> on my GitHub.<br/><br/>#}
+		<img src="{{ url_for('static', filename='img/python.png') }}" style="float:right; width: 50%"/>
+		<div style="clear: both"></div>
+
+	</div>
+
+
+</div>
+
+<div id='container4'>
+    <br/>
+	Contact me
+    <br/>
+    <br/>
+	<div class="content" style="font-size: 10px">
+		<p class="contact_me">
+            Looking for some young web developer to work and learn together?
+            <br/><br/>
+            Need a decent website and dont mind giving me a chance to gain first experience?
+            <br/><br/>
+            Looking for a Python/Front-end intern for your company?
+            <br/><br/>
+            Have any questions?
+            <br/>
+            <br/>
+            Feel free to contact me via e-mail:
+            <br/>
+            jaknow394@gmail.com
+        </p>
+	</div>
+</div>
+
+<script src="{{ url_for('static',filename='scripts/jquery.js') }}"></script>
+<script src="{{ url_for('static',filename='scripts/script.js') }}"></script>
+</body>
+</html>

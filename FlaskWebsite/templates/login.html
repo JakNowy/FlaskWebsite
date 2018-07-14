@@ -1,0 +1,53 @@
+{% extends 'formbase.html' %}
+{% block form %}
+
+    <form method="post" action="" class="container-register">
+
+{% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="{{ category }}">
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+        {{ form.hidden_tag() }}
+            <h3 class="center3"> Please log in</h3>
+
+            <div class="form">
+        {{ form.email.label()}}<br/>
+        {% if form.email.errors %}
+            {{ form.email(class = 'error-frame') }}</div>
+            {% for error in form.email.errors %}
+                <span class = 'error-msg'>{{ error }}</span>
+            {% endfor %}
+        {% else %}
+            {{ form.email() }}</div>
+        {% endif %}
+
+            <div class="form">
+        {{ form.password.label()}}<br/>
+        {% if form.password.errors %}
+            {{ form.password(class = 'error-frame') }}</div>
+            {% for error in form.password.errors %}
+                <span class = 'error-msg'>{{ error }}</span>
+            {% endfor %}
+        {% else %}
+            {{ form.password() }}</div>
+        {% endif %}
+
+
+            <div class="form">
+        {{ form.remember.label() }}
+        {{ form.remember(class = 'remember_me') }}</div>
+
+            <div class="form">
+        {{ form.submit(class = 'button') }}</div>
+
+        <p class="form form-info"> Don't have an account yet? <a href="{{ url_for('register') }}">Sign up</a>
+            or return to the <a href="{{ url_for('home') }}">homepage</a>.</p>
+
+    </form>
+{% endblock form %}
