@@ -17,9 +17,12 @@
 		<li> <a href='#container1'>Front-end Development</a> </li>
 		<li> <a href='#container2'>Back-end Development</a> </li>
 		<li> <a href='https://github.com/JakNowy' target="_blank">GitHub</a> </li>
-
 		<li>
+            {% if current_user.is_authenticated %}
+			<a href="{{ url_for('logout') }}">Log out [{{ current_user.username }}]</a>
+            {% else %}
 			<a href="{{ url_for('login') }}">Log in</a>
+            {% endif %}
 			<!--<ul>-->
 				<!--<li><a href='#container4'>E-mail</a></li>-->
 				<!--<li><a href='https://github.com/JakNowy' target="_blank">GitHub</a></li>-->
@@ -34,7 +37,7 @@
 
 <div id="container0-2">
 	<div class="content">
-		<p class="title"> So what do I offer?</p>
+		<p class="title"> Welcome at my website!</p>
 	</div>
 
 </div>
@@ -62,45 +65,55 @@
 	<div class="content">
 		<h3 style="text-align: center; font-size: 56px">Python</h3>
 		I use <span>Python 3</span> for backend purposes. I'm learing both <span>Flask</span> and <span>Django</span>
-        frameworks. Feel free to <a href={{ url_for('register') }}>register </a>
-        and <a href={{ url_for('login') }}>log in </a>
-        and share your opinions about my website below.
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        frameworks.
+        {% if current_user.is_authenticated %}
+            Feel free to share your opinions about my website below.
+        {% else %}
+            Feel free to <a href={{ url_for('register') }}>register </a>
+            and <a href={{ url_for('login') }}>log in </a>
+            and share your opinions about my website below.
+        {% endif %}
 
-{#        Feel free to check out my standalone <a href="https://github.com/JakNowy/GzK" target="_blank">#}
-{#        Django project</a> on my GitHub.<br/><br/>#}
+        <br/><br/>
 		<img src="{{ url_for('static', filename='img/python.png') }}" style="float:right; width: 50%"/>
 		<div style="clear: both"></div>
-
 	</div>
-
-
 </div>
 
 <div id='container4'>
-    <br/>
-	Contact me
-    <br/>
-    <br/>
-	<div class="content" style="font-size: 10px">
-		<p class="contact_me">
-            Looking for some young web developer to work and learn together?
-            <br/><br/>
-            Need a decent website and dont mind giving me a chance to gain first experience?
-            <br/><br/>
-            Looking for a Python/Front-end intern for your company?
-            <br/><br/>
-            Have any questions?
-            <br/>
-            <br/>
-            Feel free to contact me via e-mail:
-            <br/>
-            jaknow394@gmail.com
-        </p>
-	</div>
+	<div class="content">
+        <h3>Comment section</h3>
+        {% if current_user.is_authenticated %}
+        <h6>(You are logged as <span style="color: blue">{{ current_user.username }}</span>)</h6>
+        {% else %}
+            <h6>Please login in order to comment.</h6>
+        {% endif %}
+            {% if current_user.is_authenticated %}
+                <form method="post" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="content">
+                        {{ form.comment(class = 'form') }}<br/>
+                        {{ form.submit(class = 'form-button') }}<br/>
+                    </div>
+                </form>
+            {% endif %}
+    </div>
+	<div class="content">
+            {% for comment in comments %}
+                <div class="comment">
+                    <div class="comment-content"> {{ comment.comment }} </div>
+                    <div class="comment-data"> Posted by <span>{{ comment.author.username }}</span>
+                        on {{ comment.date }} </div>
+                </div>
+            {% endfor %}
+                <div style="clear: both"></div>
+    </div>
+{#        {% for comment in comments %}#}
+{#            <span>{{ comment.content }}</span><br/>#}
+{#            <span class="comment-data">Posted by <span>{{ comment.author.username }} </span> on {{ comment.date }}</span>#}
+{#            <br/>#}
+{#        {% endfor %}#}
+
 </div>
 
 <script src="{{ url_for('static',filename='scripts/jquery.js') }}"></script>
