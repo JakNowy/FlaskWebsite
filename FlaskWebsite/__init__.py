@@ -16,16 +16,19 @@ login_manager = LoginManager(app)
 from FlaskWebsite.models import User, Comment
 import FlaskWebsite.forms as forms
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    comments = Comment.query.all()
+
+@app.route('/', defaults={'page':1}, methods=['GET', 'POST'])
+@app.route('//<int:page>', methods=['GET', 'POST'])
+@app.route('/home', defaults={'page':1}, methods=['GET', 'POST'])
+@app.route('/home/<int:page>', methods=['GET', 'POST'])
+def home(page):
+    comments = Comment.query.order_by(Comment.date.desc()).paginate(per_page=3, page=page)
     form = forms.CommentForm()
     if form.validate_on_submit():
         comment = Comment(comment=form.comment.data, user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-    return render_template('index.html', comments=comments, form=form)
+    return render_template('index.html', comments=comments, form=form, page=page)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

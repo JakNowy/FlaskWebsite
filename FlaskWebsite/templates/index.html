@@ -88,31 +88,40 @@
         {% else %}
             <h6>Please login in order to comment.</h6>
         {% endif %}
-            {% if current_user.is_authenticated %}
-                <form method="post" action="">
-                    {{ form.hidden_tag() }}
-                    <div class="content">
-                        {{ form.comment(class = 'form') }}<br/>
-                        {{ form.submit(class = 'form-button') }}<br/>
-                    </div>
-                </form>
-            {% endif %}
-    </div>
-	<div class="content">
-            {% for comment in comments %}
-                <div class="comment">
-                    <div class="comment-content"> {{ comment.comment }} </div>
-                    <div class="comment-data"> Posted by <span>{{ comment.author.username }}</span>
-                        on {{ comment.date }} </div>
+
+        {% if current_user.is_authenticated %}
+            <form method="post" action="">
+                {{ form.hidden_tag() }}
+                <div class="content">
+                    {{ form.comment(class = 'form') }}<br/>
+                    {{ form.submit(class = 'form-button') }}<br/>
                 </div>
-            {% endfor %}
-                <div style="clear: both"></div>
+            </form>
+        {% endif %}
     </div>
-{#        {% for comment in comments %}#}
-{#            <span>{{ comment.content }}</span><br/>#}
-{#            <span class="comment-data">Posted by <span>{{ comment.author.username }} </span> on {{ comment.date }}</span>#}
-{#            <br/>#}
-{#        {% endfor %}#}
+
+    <div class="content">
+        {% for comment in comments.items %}
+            <div class="comment">
+                <div class="comment-content"> {{ comment.comment }} </div>
+                <div class="comment-data"> Posted by <span>{{ comment.author.username }}</span>
+                    on {{ comment.date }} </div>
+            </div>
+        {% endfor %}
+
+            <div style="clear: both"></div>
+
+        <div class="pagination-bar">
+            {% for page_num in comments.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                {% if page_num == page %}
+                <a class="page current" href= "{{ url_for('home',page=page_num)}}">{{ page_num }}</a>
+                {% else %}
+                <a href="{{ url_for('home',page=page_num)}}" class="page" >{{ page_num }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
 
 </div>
 
