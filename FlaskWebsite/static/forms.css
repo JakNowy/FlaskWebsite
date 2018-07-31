@@ -38,8 +38,14 @@ input {
   color: #3a52a7;
   width: 40%;
   height: auto;
+  min-height: 200px;
   background-color: #f5f5f5;
   border-radius: 10px;
+}
+.container-register h4 {
+  font-weight: bolder;
+  margin-top: 10%;
+  font-size: 20px;
 }
 .form {
   font-size: 18.2px;

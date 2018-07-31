@@ -1,0 +1,17 @@
+{% extends 'formbase.html' %}
+{% block form %}
+
+        <form action="{{ url_for('pay') }}" method="POST" class="container-register">
+
+            <h4> Have a valid credit card? Now you can support me! </h4>
+
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+
+                data-key="{{ pub_key }}"
+                data-amount="999"
+                data-name="Donate"
+                data-locale="auto">
+            </script>
+            <p> Return to the <a href="{{ url_for('home') }}">homepage</a>.</p>
+        </form>
+{% endblock %}

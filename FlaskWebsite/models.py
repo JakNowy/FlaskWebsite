@@ -18,11 +18,13 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     comment = db.relationship('Comment', backref='author', lazy=True)
+    email_confirmed = db.Column(db.Boolean, default=None)
 
     def __repr__(self):
         return f'User {self.username} {self.email}'
 
 class Comment(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

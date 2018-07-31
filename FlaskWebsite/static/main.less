@@ -229,9 +229,9 @@ span
 .comment
 {
   display: inline-block;
-  margin: 1%;
+  margin: 1% 5%;
   padding: 0;
-  width: 31%;
+  width: 40%;
   float:left;
   background-color: @color4;
   }
@@ -269,10 +269,11 @@ span
 
 .page
 {
-  display: inline-block;
+  //display: inline-block;
   background-color: @color1;
   border: @color2 solid 1px;
   width: 20px;
+  padding: 0 4px;
   height: 20px;
   margin: 0 2%;
   text-align: center;
@@ -320,6 +321,12 @@ span
 /* TABLET */
 @media screen and (max-width: 768px)
 {
+
+  .comment{
+   width: 48%;
+    margin: 1%
+  }
+
   .title
   {
     font-size: 36px;
@@ -347,6 +354,10 @@ span
 
 @media screen and (max-width: 480px)
 {
+
+  .comment{
+    width: 98%;
+  }
   #container0
   {
     background-image: url("img/JN2.JPG");

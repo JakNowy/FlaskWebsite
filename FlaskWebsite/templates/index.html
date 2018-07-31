@@ -70,9 +70,10 @@
             Feel free to share your opinions about my website below.
         {% else %}
             Feel free to <a href={{ url_for('register') }}>register </a>
-            and <a href={{ url_for('login') }}>log in </a>
+            and <a href={{ url_for('login') }}>login </a>
             and share your opinions about my website below.
         {% endif %}
+        Once logged, you can also make a <a href={{ url_for('donate') }}>donatation </a>for me.
 
         <br/><br/>
 		<img src="{{ url_for('static', filename='img/python.png') }}" style="float:right; width: 50%"/>
@@ -84,13 +85,21 @@
 	<div class="content">
         <h3>Comment section</h3>
         {% if current_user.is_authenticated %}
-        <h6>(You are logged as <span style="color: blue">{{ current_user.username }}</span>)</h6>
+        <h6>(You are logged as <span style="color: blue">{{ current_user.username }}</span>)
+                {% if not comments.items %}
+                <div>There are no comments yet!</div>
+            {% endif %}
+        </h6>
         {% else %}
-            <h6>Please login in order to comment.</h6>
+            <h6>Please login in order to comment.
+                {% if not comments.items %}
+                    <div>There are no comments yet!</div>
+                {% endif %}
+            </h6>
         {% endif %}
 
         {% if current_user.is_authenticated %}
-            <form method="post" action="">
+            <form method="post" action={{ url_for('home') }}>
                 {{ form.hidden_tag() }}
                 <div class="content">
                     {{ form.comment(class = 'form') }}<br/>
@@ -101,13 +110,13 @@
     </div>
 
     <div class="content">
-        {% for comment in comments.items %}
-            <div class="comment">
-                <div class="comment-content"> {{ comment.comment }} </div>
-                <div class="comment-data"> Posted by <span>{{ comment.author.username }}</span>
-                    on {{ comment.date }} </div>
-            </div>
-        {% endfor %}
+            {% for comment in comments.items %}
+                <div class="comment">
+                    <div class="comment-content"> {{ comment.comment }} </div>
+                    <div class="comment-data"> Posted by <span>{{ comment.author.username }}</span>
+                        on {{ comment.date }} </div>
+                </div>
+            {% endfor %}
 
             <div style="clear: both"></div>
 

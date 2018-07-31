@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, EqualTo, Email, ValidationError
 from FlaskWebsite.models import User
 
 class CommentForm(FlaskForm):
-    comment = StringField('Comment', validators=[DataRequired()])
-    submit = SubmitField('Add a comment')
+    comment = TextAreaField('Comment', validators=[DataRequired()])
+    submit = SubmitField('Post')
 
 
 class RegistrationForm(FlaskForm):
@@ -18,11 +18,13 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('That username has already been taken. Pick another one.')
+            if user.email_confirmed == True:
+                raise ValidationError('That username has already been taken. Pick another one.')
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError('That email has already been taken. Pick another one.')
+            if user.email_confirmed == True:
+                raise ValidationError('That email has already been taken. Pick another one.')
 
 class LoginForm(FlaskForm):
     email = StringField('E-mail', validators=[DataRequired(),Email()])
