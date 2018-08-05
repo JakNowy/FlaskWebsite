@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = 'JakNowySolutions@gmail.com' # <<< Mail tylko do tej stronki. Chcecie to sie włamujcie...
+app.config['MAIL_USERNAME'] = 'JakNowySolutions@gmail.com'
 app.config['MAIL_PASSWORD'] = '!qwe123!'
 
 mail = Mail(app)
