@@ -24,8 +24,8 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'positive'
 
-from FlaskWebsite.models import User, Comment
-import FlaskWebsite.forms as forms
+from models import User, Comment
+import forms
 
 
 @app.route('/', defaults={'page':1}, methods=['GET', 'POST'])
