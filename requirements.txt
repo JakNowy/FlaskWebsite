@@ -32,6 +32,6 @@ six==1.11.0
 sklearn==0.0
 SQLAlchemy==1.2.7
 stripe==2.3.0
-urllib3==1.22
+urllib3==1.26.5
 Werkzeug==0.14.1
 WTForms==2.1
